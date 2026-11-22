@@ -67,8 +67,12 @@ CPvidego takes a third path: **turn rhythm structure into explainable, editable 
 5. **Fine-tune** — replace any slot, swipe-preview alternatives, edit the music track (repeat / speed / volume / fades);
 6. **Export** — 1080p MP4 rendered in the browser, bit-identical A/V behavior to the preview.
 
+![Upload and analysis settings](docs/images/upload.jpg)
 ![Analysis board](docs/images/analysis.jpg)
+![Editor](docs/images/editor.jpg)
 ![Export](docs/images/export.jpg)
+
+<sub>Screenshots use procedurally generated placeholder footage — no third-party media.</sub>
 
 ## Quickstart
 
