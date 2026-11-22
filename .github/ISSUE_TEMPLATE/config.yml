@@ -1,0 +1,8 @@
+blank_issues_enabled: false
+contact_links:
+  - name: 💬 讨论 / 求思路 Discussions
+    url: https://github.com/Noob-stupid/cpvidego/discussions
+    about: 用法求助、方向讨论、作品展示请去 Discussions
+  - name: 🔒 安全漏洞私报
+    url: https://github.com/Noob-stupid/cpvidego/security/advisories/new
+    about: 请勿公开提安全问题，按 SECURITY.md 私报

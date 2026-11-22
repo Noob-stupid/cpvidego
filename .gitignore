@@ -1,0 +1,59 @@
+# See https://help.github.com/articles/ignoring-files/ for more about ignoring files.
+
+# dependencies
+/node_modules
+/.pnp
+.pnp.*
+.yarn/*
+!.yarn/patches
+!.yarn/plugins
+!.yarn/releases
+!.yarn/versions
+
+# testing
+/coverage
+
+# next.js
+/.next/
+/out/
+
+# production
+/build
+
+# misc
+.DS_Store
+*.pem
+
+# debug
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+.pnpm-debug.log*
+
+# env files (can opt-in for committing if needed)
+.env
+
+# vercel
+.vercel
+
+# typescript
+*.tsbuildinfo
+next-env.d.ts
+
+/src/generated/prisma
+*.swc
+
+# cpvidego 本地验证产物
+/.tmp-test/
+/.tmp-capture/
+/.tmp-*.mjs
+/.tmp-*.log
+/public/test-assets/
+
+# cpvidego 本地资产（来源未确认的音频不入库；Qoder Sites 本地描述文件）
+/assets/
+/public/music/
+/test-assets/
+*.mp3
+.CPvidego.qoder.site
+.qoder/

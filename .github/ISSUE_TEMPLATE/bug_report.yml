@@ -1,0 +1,58 @@
+name: 🐞 Bug 报告
+description: 报告一个可复现的问题
+title: "[Bug] "
+labels: [bug]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        感谢反馈！信息越全，修得越快。安全漏洞请勿在此提交，见 SECURITY.md。
+  - type: textarea
+    id: describe
+    attributes:
+      label: 问题描述
+      description: 发生了什么？期望是什么？
+      placeholder: 上传参考视频后点击「开始分析」，进度条停在 30%，控制台报错 …
+    validations:
+      required: true
+  - type: textarea
+    id: repro
+    attributes:
+      label: 复现步骤
+      value: |
+        1. 打开 …
+        2. 上传 …
+        3. 点击 …
+        4. 看到 …
+    validations:
+      required: true
+  - type: dropdown
+    id: stage
+    attributes:
+      label: 出问题的环节
+      options: [上传/分析, 一键初剪, 编辑器/槽位替换, 音乐轨道, AI 导演, 导出, 项目库/持久化, 其他]
+    validations:
+      required: true
+  - type: textarea
+    id: env
+    attributes:
+      label: 环境
+      description: 浏览器与版本、操作系统、部署方式（本地 dev / 官方 demo / 自部署）、CPvidego 版本或 commit
+      value: |
+        - 浏览器: 
+        - 系统: 
+        - 部署: 
+        - 版本: 
+    validations:
+      required: true
+  - type: textarea
+    id: logs
+    attributes:
+      label: 控制台报错 / 日志
+      render: shell
+      description: 全文粘贴，注意脱敏 API Key
+  - type: textarea
+    id: media
+    attributes:
+      label: 素材信息（可选）
+      description: 参考视频时长/分辨率/编码，出问题的素材规格；如能附上最小复现片段更好（勿上传含隐私内容）

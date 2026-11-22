@@ -1,0 +1,17 @@
+{
+  "extends": "./tsconfig.json",
+  "compilerOptions": {
+    "noEmit": false,
+    "incremental": false,
+    "module": "commonjs",
+    "moduleResolution": "node",
+    "target": "ES2022",
+    "outDir": ".tmp-test",
+    "rootDir": ".",
+    "types": ["node"],
+    "plugins": [],
+    "isolatedModules": false
+  },
+  "include": ["tests/**/*.ts", "src/lib/cpv/**/*.ts"],
+  "exclude": ["node_modules", ".tmp-test", "src/lib/cpv/render.ts"]
+}
