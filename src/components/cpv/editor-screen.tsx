@@ -17,6 +17,7 @@ import {
   RiImageLine,
   RiLayoutGridLine,
   RiListOrdered,
+  RiMagicLine,
   RiMusic2Line,
   RiPauseFill,
   RiPlayFill,
@@ -1371,7 +1372,7 @@ export function EditorScreen() {
         <div className="flex items-center gap-4">
           <Brand compact />
           <div className="hidden h-5 w-px bg-[#ddd8cf] sm:block" />
-          <div className="hidden items-center gap-3 sm:flex">
+          <div className="flex items-center gap-3">
             <button
               type="button"
               onClick={() => setStep("dna")}
@@ -1454,6 +1455,14 @@ export function EditorScreen() {
           >
             <RiFullscreenLine className="size-3.5" aria-hidden="true" />
             滑动预览
+          </button>
+          <button
+            type="button"
+            onClick={() => window.dispatchEvent(new Event("cpv:run-draft"))}
+            className="flex items-center gap-1.5 border border-[#161616] px-3 py-1.5 text-[10px] font-medium text-[#161616] hover:bg-[#f4f2ec]"
+        >
+            <RiMagicLine className="size-3.5" aria-hidden="true" />
+            一键初剪
           </button>
           <button
             type="button"

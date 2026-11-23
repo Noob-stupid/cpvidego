@@ -243,7 +243,7 @@ export function HomeScreen() {
             <button
               type="button"
               onClick={() => void handleLoadDemo()}
-              className="hidden items-center gap-1.5 border border-[#ddd8cf] bg-white px-3 py-1.5 text-[10px] text-[#161616] hover:bg-[#f6f4ef] md:flex"
+              className="flex items-center gap-1.5 border border-[#ddd8cf] bg-white px-3 py-1.5 text-[10px] text-[#161616] hover:bg-[#f6f4ef]"
             >
               <RiFilmLine className="size-3.5" aria-hidden="true" />
               载入示例

@@ -147,6 +147,7 @@ export const useLibraryStore = create<LibraryState>((set, get) => ({
   },
 
   createProject: async () => {
+    if (!get().profile) await get().init();
     const profile = get().profile;
     if (!profile) throw new Error("请先创建主页");
     const now = Date.now();

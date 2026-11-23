@@ -1,6 +1,6 @@
 "use client";
 
-import { useRef, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import {
   RiAlertLine,
   RiCheckboxCircleLine,
@@ -102,6 +102,13 @@ export function DraftPanel() {
   const [error, setError] = useState<string | null>(null);
   const [notice, setNotice] = useState<string | null>(null);
   const windowsRef = useRef<SourceWindow[]>([]);
+  const runRef = useRef<() => Promise<void>>(async () => {});
+  runRef.current = run;
+  useEffect(() => {
+    const handler = () => void runRef.current();
+    window.addEventListener("cpv:run-draft", handler);
+    return () => window.removeEventListener("cpv:run-draft", handler);
+  }, []);
   const [aiConfig, setAiConfig] = useState<AIConfig>(() => loadAIConfig());
   const [aiOpen, setAiOpen] = useState(false);
   const [aiBusy, setAiBusy] = useState(false);
