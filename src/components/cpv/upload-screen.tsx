@@ -20,6 +20,7 @@ import { cn } from "@/lib/utils";
 
 export function UploadScreen() {
   const setReference = useCPVStore((s) => s.setReference);
+  const loadDemo = useCPVStore((s) => s.loadDemo);
   const setStep = useCPVStore((s) => s.setStep);
   const analyzeDuration = useCPVStore((s) => s.analyzeDuration);
   const setAnalyzeDuration = useCPVStore((s) => s.setAnalyzeDuration);
@@ -33,6 +34,7 @@ export function UploadScreen() {
   const [meta, setMeta] = useState<{ duration: number; width: number; height: number } | null>(null);
   const [dragging, setDragging] = useState(false);
   const [loading, setLoading] = useState(false);
+  const [demoLoading, setDemoLoading] = useState(false);
   const [error, setError] = useState<string | null>(null);
 
   async function acceptFile(next: File | undefined | null) {
@@ -83,6 +85,19 @@ export function UploadScreen() {
       size: file.size,
       origin: "reference",
     });
+  }
+
+  async function startDemo() {
+    setDemoLoading(true);
+    setError(null);
+    try {
+      await loadDemo();
+      void renameCurrentProject("示例 · 120BPM 节奏复刻");
+    } catch {
+      setError("示例加载失败，请刷新页面重试");
+    } finally {
+      setDemoLoading(false);
+    }
   }
 
   async function backToLibrary() {
@@ -281,8 +296,16 @@ export function UploadScreen() {
               开始分析
               <RiArrowRightLine className="size-4" aria-hidden="true" />
             </button>
+            <button
+              type="button"
+              onClick={() => void startDemo()}
+              disabled={demoLoading}
+              className="mt-2 flex w-full items-center justify-center gap-2 border border-[#161616] px-4 py-2 text-[11px] text-[#161616] hover:bg-[#f4f2ec] disabled:opacity-40"
+            >
+              {demoLoading ? "示例加载中…" : "没有素材？载入示例参考片 + 6 段演示素材"}
+            </button>
             <p className="mt-2 text-[9px] leading-4 text-[#a39d92]">
-              分析在当前浏览器完成，不上传参考视频。
+              分析在当前浏览器完成，不上传参考视频。示例为程序化生成的占位画面。
             </p>
           </div>
         </aside>

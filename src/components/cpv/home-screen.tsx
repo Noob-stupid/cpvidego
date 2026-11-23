@@ -16,6 +16,7 @@ import { isImageFile } from "@/lib/cpv/media";
 import { formatDurationLabel } from "@/lib/cpv/media";
 import type { ProjectRecord } from "@/lib/cpv/db";
 import { formatProjectDate, useLibraryStore } from "@/stores/library-store";
+import { useCPVStore } from "@/stores/cpv-store";
 import { cn } from "@/lib/utils";
 
 const STATUS_LABEL: Record<ProjectRecord["status"], string> = {
@@ -81,6 +82,8 @@ export function HomeScreen() {
   const projects = useLibraryStore((s) => s.projects);
   const refreshProjects = useLibraryStore((s) => s.refreshProjects);
   const createProject = useLibraryStore((s) => s.createProject);
+  const renameCurrentProject = useLibraryStore((s) => s.renameCurrentProject);
+  const loadDemo = useCPVStore((s) => s.loadDemo);
   const createProfile = useLibraryStore((s) => s.createProfile);
   const switchProfile = useLibraryStore((s) => s.switchProfile);
   const updateProfile = useLibraryStore((s) => s.updateProfile);
@@ -133,6 +136,16 @@ export function HomeScreen() {
   async function handleCreateProject() {
     try {
       await createProject();
+    } catch (cause) {
+      console.error(cause);
+    }
+  }
+
+  async function handleLoadDemo() {
+    try {
+      await createProject();
+      await loadDemo();
+      void renameCurrentProject("示例 · 120BPM 节奏复刻");
     } catch (cause) {
       console.error(cause);
     }
@@ -226,6 +239,14 @@ export function HomeScreen() {
             >
               <RiAddLine className="size-3.5" aria-hidden="true" />
               新建项目
+            </button>
+            <button
+              type="button"
+              onClick={() => void handleLoadDemo()}
+              className="hidden items-center gap-1.5 border border-[#ddd8cf] bg-white px-3 py-1.5 text-[10px] text-[#161616] hover:bg-[#f6f4ef] md:flex"
+            >
+              <RiFilmLine className="size-3.5" aria-hidden="true" />
+              载入示例
             </button>
             <div className="relative">
               <button

@@ -7,6 +7,7 @@ import {
   splitClipAt,
 } from "@/lib/cpv/audio-track";
 import { buildColorGrade } from "@/lib/cpv/color-match";
+import { buildDemoPack } from "@/lib/cpv/demo";
 import { buildCompositionAdjust } from "@/lib/cpv/composition";
 import { shouldMirrorX } from "@/lib/cpv/motion";
 import type { DraftReport } from "@/lib/cpv/plan-quality";
@@ -49,6 +50,7 @@ interface CPVState {
 
   setStep: (step: CPVStep) => void;
   setReference: (asset: MediaAsset) => void;
+  loadDemo: () => Promise<void>;
   setAnalysis: (result: AnalysisResult) => void;
   addAsset: (asset: MediaAsset) => void;
   updateAsset: (assetId: string, patch: Partial<MediaAsset>) => void;
@@ -110,6 +112,15 @@ export const useCPVStore = create<CPVState>((set, get) => ({
       slots: [],
       selectedSlotId: null,
     }),
+  loadDemo: async () => {
+    const { reference, assets } = await buildDemoPack();
+    set({
+      ...initial,
+      reference,
+      step: "analyzing",
+      assets: [reference, ...assets],
+    });
+  },
   setAnalysis: (result) => {
     const { reference } = get();
     const referenceId = reference?.id ?? "reference";
