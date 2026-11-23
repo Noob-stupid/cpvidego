@@ -145,7 +145,7 @@ export function HomeScreen() {
     try {
       await createProject();
       await loadDemo();
-      void renameCurrentProject("示例 · 120BPM 节奏复刻");
+      void renameCurrentProject("示例 · 动漫燃剪复刻");
     } catch (cause) {
       console.error(cause);
     }

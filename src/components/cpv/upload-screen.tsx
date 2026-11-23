@@ -92,7 +92,7 @@ export function UploadScreen() {
     setError(null);
     try {
       await loadDemo();
-      void renameCurrentProject("示例 · 120BPM 节奏复刻");
+      void renameCurrentProject("示例 · 动漫燃剪复刻");
     } catch {
       setError("示例加载失败，请刷新页面重试");
     } finally {
@@ -305,7 +305,7 @@ export function UploadScreen() {
               {demoLoading ? "示例加载中…" : "没有素材？载入示例参考片 + 6 段演示素材"}
             </button>
             <p className="mt-2 text-[9px] leading-4 text-[#a39d92]">
-              分析在当前浏览器完成，不上传参考视频。示例为程序化生成的占位画面。
+              分析在当前浏览器完成，不上传参考视频。示例为一段动漫燃剪与若干演示镜头。
             </p>
           </div>
         </aside>

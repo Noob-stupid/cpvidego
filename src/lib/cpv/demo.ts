@@ -19,7 +19,7 @@ export async function buildDemoPack(): Promise<{ reference: MediaAsset; assets: 
   const reference: MediaAsset = {
     id: "reference",
     kind: "video",
-    name: "示例参考片 · 120BPM.mp4",
+    name: "示例参考片 · 动漫燃剪.mp4",
     url: URL.createObjectURL(file),
     file,
     duration: meta.duration,
